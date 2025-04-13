@@ -1,3 +1,5 @@
+import pygame
+
 class Settings():
 
     def __init__(self):
@@ -18,6 +20,11 @@ class Settings():
 
         self.speedup_scale = 1.1
         self.score_scale = 1.5
+
+        pygame.mixer.init()
+        self.bullet_sound = pygame.mixer.Sound('assets/sound/laser.mp3')
+        self.bullet_sound.set_volume(0.3)
+        self.hit_sound = pygame.mixer.Sound('assets/sound/hit.mp3')
     
 
     def initialize_dynamic_settings(self):

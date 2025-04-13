@@ -33,6 +33,7 @@ def check_keydown_events(event, ai_settings, stats, screen, sb, ship, aliens, bu
     elif event.key == pygame.K_SPACE:
         new_bullets = Bullet(ai_settings, screen, ship)
         bullets.add(new_bullets)
+        ai_settings.bullet_sound.play()
     elif event.key == pygame.K_q:
         sys.exit()
     elif event.key == pygame.K_p and not stats.game_active:
@@ -136,6 +137,7 @@ def check_bullet_alien_col(ai_settings, screen, ship, sb, stats, aliens, bullets
 
     if collision:
         for aliens in collision.values():
+            ai_settings.hit_sound.play()
             stats.score += ai_settings.alien_points * len(aliens)
             sb.prep_score()
             check_high_score(stats, sb)
