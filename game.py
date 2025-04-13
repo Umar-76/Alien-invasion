@@ -12,8 +12,13 @@ def run_game():
     ai_settings = Settings()
     
     pygame.init()
+    pygame.mixer.init()
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
     pygame.display.set_caption("Alien Invasion")
+
+    pygame.mixer.music.load('assets/sound/bg_music.mp3')
+    pygame.mixer.music.play(-1)
+
     ship = Ship(ai_settings, screen)
     stats = GameStats(ai_settings)
     play_button = Button(screen, "PLAY!")
